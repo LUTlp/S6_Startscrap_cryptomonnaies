@@ -19,6 +19,7 @@ class StartScrap
   end
 
   def save
+    
     @compils = Hash[@array_names.zip(@array_values)] #Fait un Hash des deux arrays : "@array_name" et "@array_value"
     p @compils
     @compils.each do |n, k|
