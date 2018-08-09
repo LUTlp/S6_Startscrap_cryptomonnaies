@@ -3,30 +3,36 @@ require 'open-uri'
 require 'nokogiri'
 
 class StartScrap
-attr_accessor :nomcrypto, :prixcrypto
-
   def initialize
     @page = Nokogiri::HTML(open("https://coinmarketcap.com"))
+    @array_names = [] #Création d'un array "@array_name" vide
+    @array_values = [] #Création d'un array "@array_value" vide
+  end
 
+  def scrap
+    @page.css('a.currency-name-container').each do |node|
+      @array_names << node.text #Ajoute dans l'array chaque devise
+      end
+    @page.css('a.price').each do |node|
+      @array_values << node.text #Ajoute dans l'array chaque devise
+      end
+  end
+
+  def save
+    @compils = Hash[@array_names.zip(@array_values)] #Fait un Hash des deux arrays : "@array_name" et "@array_value"
+    p @compils
+    @compils.each do |n, k|
+      c = Crypto.create(
+        name: n,
+        price: k
+      )
+      p c
+    end
+    p "méfait accompli"
   end
 
   def perform
-    Cryptom.destroy_all
-    @page = Nokogiri::HTML(open("https://coinmarketcap.com"))
-    @array_name = [] #Création d'un array "@array_name" vide
-    @array_value = [] #Création d'un array "@array_value" vide
-    page.css('a.currency-name-container').each do |node|
-      @array_name << node.text #Ajoute dans l'array chaque devise
-      end
-    page.css('a.price').each do |node|
-      @array_value << node.text #Ajoute dans l'array chaque devise
-      end
+    scrap
+    save
   end
-
-
-  def save
-    perform
-    puts Hash[@array_name.zip(@array_value)] #Fait un Hash des deux arrays : "@array_name" et "@array_value"
-  end
-
 end
