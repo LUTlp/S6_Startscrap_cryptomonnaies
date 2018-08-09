@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ohé Moussaillon
+Bienvenue sur notre application  !
+Tu peux retrouver le site qui correspond à ce code sur :
+https://scrapperoklmsisterhood.herokuapp.com/
 
-Things you may want to cover:
+ Grand bien t'en fasse !
 
-* Ruby version
+## Marche à suivre
 
-* System dependencies
+Nous utilisons ici *Postgrrrrrrrrrrrrrrr*
+Pour lire le code, lance ton ```bundle install ```, *as usual*.
 
-* Configuration
+Et un ```rails db:create```
 
-* Database creation
+## Pour info
 
-* Database initialization
+* Ruby version : 2.5.1
 
-* How to run the test suite
+A bientôt,
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+L'équipe de chic et de choc et moi-même, LUTlp, alias R.A.P., te souhaitons **BIENVENUE**
