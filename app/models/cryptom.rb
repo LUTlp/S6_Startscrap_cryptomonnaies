@@ -1,0 +1,2 @@
+class Cryptom < ApplicationRecord
+end
